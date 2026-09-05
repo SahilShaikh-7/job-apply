@@ -20,6 +20,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget xvfb
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+      - name: Verify Chrome
+        run: |
+          google-chrome --version
+          node --version
+          npm --version
+
       - name: Run Wellfound automation - DRY RUN
         env:
           NAME: ${{ secrets.NAME }}
@@ -43,4 +56,6 @@ jobs:
           PORTFOLIO_URL: ${{ secrets.PORTFOLIO_URL }}
           GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
 
-        run: node auto-apply-runner.js wellfound
+        run: |
+          xvfb-run -a --server-args="-screen 0 1280x900x24" \
+            node auto-apply-runner.js wellfound
