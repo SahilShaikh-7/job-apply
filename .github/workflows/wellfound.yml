@@ -20,8 +20,27 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+      - name: Run Wellfound automation - DRY RUN
+        env:
+          NAME: ${{ secrets.NAME }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PHONE: ${{ secrets.PHONE }}
+          LOCATION: ${{ secrets.LOCATION }}
+          CURRENT_ROLE: ${{ secrets.CURRENT_ROLE }}
+          COMPANY: ${{ secrets.COMPANY }}
+          EDUCATION: ${{ secrets.EDUCATION }}
+          YEARS_EXPERIENCE: ${{ secrets.YEARS_EXPERIENCE }}
+          SKILLS: ${{ secrets.SKILLS }}
+          HIGHLIGHTS: ${{ secrets.HIGHLIGHTS }}
+          NOTICE_PERIOD: ${{ secrets.NOTICE_PERIOD }}
+          CURRENT_CTC: ${{ secrets.CURRENT_CTC }}
+          EXPECTED_CTC: ${{ secrets.EXPECTED_CTC }}
+          DOB: ${{ secrets.DOB }}
+          GENDER: ${{ secrets.GENDER }}
+          WORK_AUTH: ${{ secrets.WORK_AUTH }}
+          GITHUB_URL: ${{ secrets.GITHUB_URL }}
+          LINKEDIN_URL: ${{ secrets.LINKEDIN_URL }}
+          PORTFOLIO_URL: ${{ secrets.PORTFOLIO_URL }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
 
-      - name: Run Wellfound automation
         run: node auto-apply-runner.js wellfound
