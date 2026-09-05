@@ -43,7 +43,7 @@
     // Skip jobs whose title contains any of these
     TITLE_BLOCKLIST: [
       'senior', 'principal', 'director', 'manager', 'lead', 'devops',
-      'data engineer', 'qa', 'test', 'intern', 'designer', 'sales', 'marketing',
+      'data engineer', 'qa', 'test', 'designer', 'sales', 'marketing',
       'teacher', 'trainer', 'tutor', 'instructor', 'coach',
       '.net', 'c#', 'php', 'ruby', 'golang', 'ios', 'android native', 'flutter',
     ],
